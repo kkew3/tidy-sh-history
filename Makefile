@@ -1,9 +1,12 @@
+CC = clang
+
+
 .PHONY: all clean
 
 all: unmetafy
 
 unmetafy: unmetafy.c
-	clang -o $@ $^
+	$(CC) -o $@ $^
 
 clean:
 	rm -f unmetafy

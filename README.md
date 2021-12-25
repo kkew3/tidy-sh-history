@@ -13,6 +13,13 @@ mv ~/.zsh_history ~/.zsh_history.bak
 python3 /absolute/path/to/tidy_sh_history.py ~/.zsh_history.bak ~/.zsh_history /whatever/path/to/log_output.log
 ```
 
+or the following if using `bash`:
+
+```sh
+mv ~/.bash_history ~/.bash_history.bak
+python3 /absolute/path/to/tidy_sh_history.py ~/.bash_history.bak ~/.bash_history /whatever/path/to/log_output.log
+```
+
 3. In `crontab -e` add:
 
 ```sh

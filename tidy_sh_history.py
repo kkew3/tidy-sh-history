@@ -3,6 +3,7 @@ import sys
 import os
 import subprocess
 import logging
+import shlex
 
 # Read history from argv[1], output filtered input to argv[2], and log to
 # argv[3]. If any lines cannot be decoded as utf-8, they will be kept.
@@ -82,6 +83,19 @@ try:
             if len(line) > 100:
                 skipped_count += 1
                 continue
+
+            # remove invalid cd
+            try:
+                tokens = shlex.split(line)
+            except ValueError:
+                # ignoring `ValueError: No escaped character`; if ValueError
+                # is raised, the line should not be skipped
+                pass
+            else:
+                if len(tokens) == 2 and tokens[0] == 'cd':
+                    if not os.path.isdir(tokens[1]):
+                        skipped_count += 1
+                        continue
 
             # does not start with '#' character
             if line.startswith('#'):

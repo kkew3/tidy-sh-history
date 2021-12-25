@@ -48,7 +48,7 @@ def handle_decode(byte_line: bytes, outfileobj):
         try:
             decoded = unmetafied.decode('utf-8')
         except UnicodeDecodeError:
-            logging.warning(
+            logging.error(
                 'OUTPUT=%s UnicodeDecodeError retains; '
                 'keeping line %s', OUTPUT_FILENAME, byte_line)
             outfileobj.write(byte_line)

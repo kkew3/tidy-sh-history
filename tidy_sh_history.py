@@ -77,9 +77,9 @@ try:
                 skipped_count += 1
                 continue
 
-            # at most 80 characters in line;
+            # at most 100 characters in line;
             # command too long is hard to reuse
-            if len(line) > 80:
+            if len(line) > 100:
                 skipped_count += 1
                 continue
 

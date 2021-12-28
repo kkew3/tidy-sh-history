@@ -93,7 +93,7 @@ try:
                 pass
             else:
                 if len(tokens) == 2 and tokens[0] == 'cd':
-                    if not os.path.isdir(tokens[1]):
+                    if not os.path.isdir(os.path.expanduser(tokens[1])):
                         skipped_count += 1
                         continue
 
